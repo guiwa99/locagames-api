@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Senac.LocaGames.Api.Configurations;
 using Senac.LocaGames.Domain.Dtos;
 using Senac.LocaGames.Domain.Dtos.Jogo.Request;
 using Senac.LocaGames.Domain.Exceptions;
@@ -17,6 +19,7 @@ namespace Senac.LocaGames.Api.Controllers
       _jogoService = usuarioService;
     }
 
+    [Authorize(PolicyConstants.Default)]
     [HttpPost()]
     public async Task<IActionResult> Cadastrar(CadastrarRequest cadastrarRequest)
     {
